@@ -74,7 +74,7 @@ public class Researcher {
 				//Create JSON Object to show Error msg.
 				output = "{\"status\":\"error\", \"data\": \"Error while Inserting Researcher.\"}";   
 				System.err.println(e.getMessage()); 
-				//e.printStackTrace();
+				e.printStackTrace();
 				//System.err.println(e.getMessage()); 
 			} 
 			return output; 
