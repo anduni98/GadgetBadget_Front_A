@@ -111,9 +111,11 @@ public class ResearcherAPI extends HttpServlet {
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
 	 */
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Map<String, String> param = getParasMap(request);
 		
-		String result = researcherObj.deleteResearcher(param.get("reseacherID").toString());
+		
+		Map<String, String> param = getParasMap(request);
+		System.out.println(param.get("researcher_ID").toString());
+		String result = researcherObj.deleteResearcher(param.get("researcher_ID").toString());
 		
 		response.getWriter().write(result);
 	}

@@ -9,10 +9,10 @@ public class Researcher {
 		Connection con = null; 
 		try
 		{ 
-			Class.forName("com.mysql.jdbc.Driver"); 
+			Class.forName("com.mysql.cj.jdbc.Driver"); 
 	 
 			//Provide the correct details: DBServer/DBName, username, password 
-			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/paflab6", "root", ""); 
+			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/gadgetbadget", "root", ""); 
 			System.out.println("Successfully connected");
 		} 
 		catch (Exception e) 
@@ -74,7 +74,7 @@ public class Researcher {
 				//Create JSON Object to show Error msg.
 				output = "{\"status\":\"error\", \"data\": \"Error while Inserting Researcher.\"}";   
 				System.err.println(e.getMessage()); 
-				e.printStackTrace();
+				//e.printStackTrace();
 				//System.err.println(e.getMessage()); 
 			} 
 			return output; 
@@ -108,7 +108,7 @@ public class Researcher {
 			// iterate through the rows in the result set
 			while (rs.next()) 
 			{ 
-				String reseacherID = Integer.toString(rs.getInt("reseacherID")); 
+				String reseacherID = String.valueOf(rs.getInt("reseacherID")); 
 				String researcherCode = rs.getString("researcherCode"); 
 				String researcherName = rs.getString("researcherName"); 
 				String Email = rs.getString("Email"); 
@@ -119,10 +119,7 @@ public class Researcher {
 			// Add into the html table
 				
 				
-				output += "<tr><td><input id='hidresearcherIDUpdate' name='hidresearcherIDUpdate' type='hidden' value='" + reseacherID + "'>" + researcherCode + "</td>"; 
-
-				
-				
+				output += "<tr><td><input id='hidresearcherIDUpdate' name='hidresearcherIDUpdate' type='hidden' value='" + reseacherID + "'>" + researcherCode + "</td>";
 				output += "<td>" + researcherName + "</td>"; 
 				output += "<td>" + Email + "</td>"; 
 				output += "<td>" + contactNo + "</td>"; 
@@ -130,7 +127,7 @@ public class Researcher {
 				
 				// buttons
 				 output += "<td><input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-secondary'></td>"
-					  		+ "<td><input name='btnRemove' type='button' value='Remove' class='btnRemove btn btn-danger' data-reseacherID='"+ reseacherID +"'>"+"</td></tr>";
+					  		+ "<td><input name='btnRemove' type='button' value='Remove' class='btnRemove btn btn-danger' data-resID='"+reseacherID+"'>"+"</td></tr>";
 
 			} 
 			con.close(); 
@@ -140,11 +137,11 @@ public class Researcher {
 		catch (Exception e) 
 		{ 
 			output = "Error while reading the items.";
-			e.printStackTrace();
+			//e.printStackTrace();
 			
 			//String query = "select * from researcher";
 			//System.out.println(query);
-			//System.err.println(e.getMessage()); 
+			System.err.println(e.getMessage()); 
 		} 
 		return output; 
 	 }
@@ -192,8 +189,8 @@ public class Researcher {
 		catch (Exception e) 
 		{ 
 			output = "{\"status\":\"error\", \"data\": \"Error while Updating Researcher Details.\"}";      
-			//System.err.println(e.getMessage());
-			e.printStackTrace();
+			System.err.println(e.getMessage());
+			//e.printStackTrace();
 			//System.err.println(e.getMessage()); 
 		} 
 		return output; 
@@ -227,7 +224,7 @@ public class Researcher {
 		catch (Exception e) 
 		{ 
 			 //Create JSON object 
-			  output = "{\"status\":\"error\", \"data\": \"Error while Deleting Researcher.\"}";
+			  output = "{\"status\":\"error\", \"data\": \"Error while deleting Researcher.\"}";
 			  System.err.println(e.getMessage());  
 		} 
 		return output; 

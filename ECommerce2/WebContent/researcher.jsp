@@ -23,23 +23,23 @@
 				
 				<form id="formResearcher" name="formResearcher" method="post" action="researcher.jsp">  
 					Researcher Code:  
-					<input id="code" name="code" type="text" class="form-control form-control-sm">  
+					<input id="researcherCode" name="researcherCode" type="text" class="form-control form-control-sm">  
 					
 					<br> 
 					Researcher Name:  
-					<input id="rname" name="rname" type="text" class="form-control form-control-sm">  
+					<input id="researcherName" name="researcherName" type="text" class="form-control form-control-sm">  
 					
 					<br>
 					 Email:  
-					 <input id="email" name="email" type="text" class="form-control form-control-sm">  
+					 <input id="Email" name="Email" type="text" class="form-control form-control-sm">  
 					 
 					 <br> 
 					 Contact Number:  
-					 <input id="phoneNo" name="phoneNo" type="text" class="form-control form-control-sm">  
+					 <input id="contactNo" name="contactNo" type="text" class="form-control form-control-sm">  
 					 
 					 <br> 
 					 Project Category:  
-					 <input id="category" name="category" type="text" class="form-control form-control-sm">  
+					 <input id="projectCategory" name="projectCategory" type="text" class="form-control form-control-sm">  
 					 
 
 					 

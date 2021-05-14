@@ -72,7 +72,7 @@ function onResearcherSaveComplete(response, status){
 $(document).on("click", ".btnUpdate", function(event) 
 		{     
 	$("#hidresearcherIDSave").val($(this).closest("tr").find('#hidresearcherIDUpdate').val());     
-	$("#reseacherCode").val($(this).closest("tr").find('td:eq(0)').text());    
+	$("#researcherCode").val($(this).closest("tr").find('td:eq(0)').text());    
 	$("#researcherName").val($(this).closest("tr").find('td:eq(1)').text());     
 	$("#Email").val($(this).closest("tr").find('td:eq(2)').text());     
 	$("#contactNo").val($(this).closest("tr").find('td:eq(3)').text()); 
@@ -88,7 +88,8 @@ $(document).on("click", ".btnRemove", function(event){
 	{
 		url : "ResearcherAPI",
 		type : "DELETE",
-		data : "reseacherID=" + $(this).data("reseacherID"),
+		data : "researcher_ID=" + $(this).data("resID"),
+		//data : "reseacherID=17",   
 		dataType : "text",
 		complete : function(response, status)
 		{
@@ -108,7 +109,7 @@ function onResearcherDeletedComplete(response, status)
 			$("#alertSuccess").text("Successfully Deleted.");
 			$("#alertSuccess").show();
 					
-			$("#divItemsGrid").html(resultSet.data);
+			$("#divresearcherGrid").html(resultSet.data);
 	
 		}else if(resultSet.status.trim() == "error"){
 			$("#alertError").text(resultSet.data);
